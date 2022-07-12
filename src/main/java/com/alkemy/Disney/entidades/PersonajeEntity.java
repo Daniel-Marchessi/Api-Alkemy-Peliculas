@@ -1,4 +1,4 @@
-package com.alkemy.Peliculas12.entidades;
+package com.alkemy.Disney.entidades;
 
 
 import java.util.HashSet;
@@ -18,16 +18,20 @@ public class PersonajeEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long ID;
+	private Long id;
 	
-	private String Imagen;
-	private String Nombre;
-	private int Edad;
-	private int Peso;
-	private String Historia;
+	private String imagen;
+	private String nombre;
+	private int edad;
+	private int peso;
+	private String historia;
 	
 	
-	@ManyToMany(mappedBy ="personajes", cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy ="personajes", cascade = {
+			
+			CascadeType.PERSIST,
+			CascadeType.MERGE
+	})
 	private Set<PeliculaEntity> peliculas = new HashSet<>(); 
 	
 }

@@ -1,4 +1,4 @@
-package com.alkemy.Peliculas12.entidades;
+package com.alkemy.Disney.entidades;
 import javax.persistence.*;
 
 import lombok.*;

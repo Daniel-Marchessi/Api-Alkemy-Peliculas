@@ -1,4 +1,4 @@
-package com.alkemy.Peliculas12.entidades;
+package com.alkemy.Disney.entidades;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -17,7 +17,7 @@ public class PeliculaEntity {
 	@Id
 	
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private long ID;
+	private long id;
 	
 	private String imagen;
 	private String titulo;
@@ -25,13 +25,16 @@ public class PeliculaEntity {
 	private int calificacion;
 	
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = {
+			CascadeType.PERSIST,
+			CascadeType.MERGE
+	})
 	@JoinColumn(name = "genero_id", insertable= false, updatable = false )
 	private GeneroEntity genero;
 	
 	
 	@Column(name = "genero_id", nullable = false)
-	private Long GeneroID;
+	private Long generoID;
 	
 
 	@ManyToMany (
